@@ -1,0 +1,39 @@
+@import '../styles.scss';
+
+.toolbar{
+  width: 100%;
+  background-color: $primary-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+
+  p-toolbar {
+    color: $primary-color-text;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 920px;
+    a {
+      text-align: center;
+      border-radius: 4px;
+      width: 100px;
+      cursor: pointer;
+    }
+    a:hover {
+      transition: all 0.3s ease;
+      color: $primary-color-text;
+      background-color: $secondary-color;
+    }
+
+    p {
+      font-size: 12px;
+      background-color: #119c8d;
+      color: $secondary-color;
+      padding: 5px;
+      border-radius: 20px;
+    }
+  }
+}
+
