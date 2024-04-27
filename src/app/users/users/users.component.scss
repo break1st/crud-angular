@@ -43,12 +43,16 @@ td {
     // padding: 10px;
     button {
       // font-size: 10px;
+      color: white;
       padding: 4px;
       border-radius: 4px;
       width: 50px;
       border: none;
       background-color: $primary-color;
       cursor: pointer;
+      &:nth-child(2){
+        background-color: #DC2626;
+      }
 
       &:hover{
         transition: all 0.3s ease;

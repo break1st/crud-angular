@@ -1,0 +1,33 @@
+<div class="card flex justify-content-center">
+  <p-dialog
+    draggable="false"
+    [(visible)]="visible"
+    [style]="{
+      width: '100%',
+      height: '100%',
+      maxHeight: '420px',
+      maxWidth: '500px'
+    }"
+  >
+    <div class="form">
+      <h2>{{title}}</h2>
+      <input type="text" pInputText placeholder="Nome" />
+      <input type="text" pInputText placeholder="Apelido" />
+      <input type="text" pInputText placeholder="Time" />
+      <input type="text" pInputText placeholder="Cpf" />
+      <input type="text" pInputText placeholder="Hobbie" />
+      <p-dropdown
+        appendTo="body"
+        [options]="cities"
+        placeholder="Cidade"
+        optionLabel="name"
+        [style]="{
+          width: '80%',
+          padding: '5px',
+          fontSize: '14px'
+        }"
+      ></p-dropdown>
+      <button label="Salvar" class="p-button-success">Salvar</button>
+    </div>
+  </p-dialog>
+</div>

@@ -1,0 +1,15 @@
+div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: red;
+    height: 100%;
+  }
+}

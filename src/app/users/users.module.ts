@@ -4,6 +4,7 @@ import { TableModule } from 'primeng/table';
 
 import { UsersRoutingModule } from './users-routing.module';
 import { UsersComponent } from './users/users.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { UsersComponent } from './users/users.component';
   imports: [
     CommonModule,
     UsersRoutingModule,
-    TableModule
+    TableModule,
+    SharedModule
   ]
 })
 export class UsersModule { }

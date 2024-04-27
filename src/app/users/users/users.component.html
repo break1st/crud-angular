@@ -1,12 +1,16 @@
+<app-error-dialog [visible]="visibleErrorDialog" [message]="messageErrorDialog"></app-error-dialog>
+<app-edit-user-modal [visible]="visibleEditUserModal"></app-edit-user-modal>
+<app-add-user-modal [visible]="visibleAddUserModal"></app-add-user-modal>
+<app-delete-dialog [visible]="visibleDeleteUserDialog"></app-delete-dialog>
 <div class="add-user">
-  <button>
+  <button (click)="onClickAddUser()">
     <i class="pi pi-user" style="font-size: 1rem; margin-right: 5px"></i>
     Cadastrar Usuário
   </button>
 </div>
 <div class="table-users">
   <p-table
-    [value]="users"
+    [value]="(users$ | async)!"
     [tableStyle]="{
       'max-width': '920px',
       width: '920px',
@@ -33,10 +37,8 @@
         <td>{{ user.hobbie }}</td>
         <td>{{ user.cidade }}</td>
         <td class="buttons">
-          <button class="pi pi-pen-to-square" style="font-size: 1rem" id={{user.id}}></button>
-          <button class="pi pi-trash" style="font-size: 1rem" id={{user.id}}></button>
-
-          <!-- <button id={{user.id}}>Excluir</button> -->
+          <button (click)="onClickEditUser()" class="pi pi-pen-to-square" style="font-size: 1rem" id={{user.id}}></button>
+          <button (click)="onClickDeleteUser()" class="pi pi-trash" style="font-size: 1rem" id={{user.id}}></button>
         </td>
       </tr>
     </ng-template>
