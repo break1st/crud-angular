@@ -1,0 +1,58 @@
+<app-error-dialog
+  [visible]="visibleErrorDialog"
+  [message]="messageErrorDialog"
+></app-error-dialog>
+<app-edit-cidade-modal
+  [visible]="visibleEditCidadeModal"
+  [cidade]="cidadeToEdit"
+></app-edit-cidade-modal>
+<app-add-cidade-modal
+  [visible]="visibleAddCidadeModal"
+></app-add-cidade-modal>
+<app-delete-cidade-dialog [visible]="visibleDeleteCidadeDialog" [cidadeId]="cidadeIdToDelete"></app-delete-cidade-dialog>
+<div class="add-cidade">
+  <button (click)="onClickAddCidade()">
+    <i class="pi pi-user" style="font-size: 1rem; margin-right: 5px"></i>
+    Cadastrar Cidade
+  </button>
+</div>
+<div class="table-cidades">
+  <p-table
+    [value]="(cidades$ | async)!"
+    [tableStyle]="{
+      'max-width': '920px',
+      width: '920px',
+      'font-size': '14px'
+    }"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Cidade</th>
+        <th>Estado</th>
+        <th>Habitantes</th>
+        <th>Ações</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-cidade>
+      <tr>
+        <td>{{ cidade.cidade }}</td>
+        <td>{{ cidade.estado }}</td>
+        <td>{{ cidade.habitantes }}</td>
+        <td class="buttons">
+          <button
+            (click)="onClickEditCidade(cidade)"
+            class="pi pi-pen-to-square"
+            style="font-size: 1rem"
+            id="{{ cidade.id }}"
+          ></button>
+          <button
+            (click)="onClickDeleteCidade(cidade)"
+            class="pi pi-trash"
+            style="font-size: 1rem"
+            id="{{ cidade.id }}"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

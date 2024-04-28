@@ -28,11 +28,24 @@ interface IUserData {
 export class EditUserModalComponent implements OnInit {
   constructor(private usersService: UsersService) {}
 
-  @Input() cidades: ICidade[] = [];
   citiesToSelect: City[] = [];
 
   @Input() title: string = 'Editar Usuário';
   @Input() visible: boolean = false;
+
+  private _cidades: ICidade[] = [];
+  @Input()
+  set cidades(value: ICidade[]) {
+    if (value === null) return;
+    this._cidades = value;
+    this.citiesToSelect = value.map((cidade) => ({
+      id: cidade.id,
+      name: `${cidade.cidade} - ${cidade.estado}`,
+    }));
+  }
+  get cidades(): ICidade[] {
+    return this._cidades;
+  }
 
   private _user: IUser | null = null;
   @Input()
@@ -59,7 +72,6 @@ export class EditUserModalComponent implements OnInit {
   messageErrorDialog: string = '';
 
   ngOnInit() {
-    console.log('cidades', this.cidades);
     if (this.cidades) {
       this.citiesToSelect = this.cidades.map((cidade) => ({
         id: cidade.id,

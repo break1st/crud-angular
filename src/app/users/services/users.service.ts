@@ -44,7 +44,6 @@ export class UsersService {
   }
 
   update(user: UpdateUserRequest) {
-    console.log('chamou', user);
     const { id, ...rest } = user;
     return this.httpClient.put<IUser>(this.API + `users/${id}`, rest).pipe(first());
   }

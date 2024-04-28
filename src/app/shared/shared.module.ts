@@ -8,6 +8,9 @@ import { DialogModule } from 'primeng/dialog';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
 import { AddUserModalComponent } from './components/add-user-modal/add-user-modal.component';
+import { AddCidadeModalComponent } from './components/add-cidade-modal/add-cidade-modal.component';
+import { EditCidadeModalComponent } from './components/edit-cidade-modal/edit-cidade-modal.component';
+import { DeleteCidadeDialogComponent } from './components/delete-cidade-dialog/delete-cidade-dialog.component';
 
 
 @NgModule({
@@ -15,7 +18,10 @@ import { AddUserModalComponent } from './components/add-user-modal/add-user-moda
     ErrorDialogComponent,
     EditUserModalComponent,
     DeleteDialogComponent,
-    AddUserModalComponent
+    AddUserModalComponent,
+    AddCidadeModalComponent,
+    EditCidadeModalComponent,
+    DeleteCidadeDialogComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +34,10 @@ import { AddUserModalComponent } from './components/add-user-modal/add-user-moda
     ErrorDialogComponent,
     EditUserModalComponent,
     DeleteDialogComponent,
-    AddUserModalComponent
+    AddUserModalComponent,
+    AddCidadeModalComponent,
+    EditCidadeModalComponent,
+    DeleteCidadeDialogComponent
   ],
   providers: []
 })

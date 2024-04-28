@@ -1,0 +1,23 @@
+<app-error-dialog
+  [visible]="visibleErrorDialog"
+  [message]="messageErrorDialog"
+></app-error-dialog><div class="card flex justify-content-center">
+  <p-dialog
+    draggable="false"
+    [(visible)]="visible"
+    [style]="{
+      width: '100%',
+      height: '100%',
+      maxHeight: '300px',
+      maxWidth: '500px'
+    }"
+  >
+    <div class="form">
+      <h2>{{title}}</h2>
+      <input [(ngModel)]="cidadeData.cidade" type="text" pInputText placeholder="Cidade" />
+      <input [(ngModel)]="cidadeData.estado" type="text" pInputText placeholder="Estado" />
+      <input [(ngModel)]="cidadeData.habitantes" type="text" pInputText placeholder="Habitantes" />
+      <button (click)="salvar()" label="Salvar" class="p-button-success">Salvar</button>
+    </div>
+  </p-dialog>
+</div>

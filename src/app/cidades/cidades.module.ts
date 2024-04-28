@@ -3,18 +3,18 @@ import { NgModule } from '@angular/core';
 import { TableModule } from 'primeng/table';
 
 import { SharedModule } from '../shared/shared.module';
-import { UsersRoutingModule } from './users-routing.module';
-import { UsersComponent } from './users/users.component';
+import { CidadesRoutingModule } from './cidades-routing.module';
+import { CidadesComponent } from './cidades/cidades.component';
 
 @NgModule({
   declarations: [
-    UsersComponent
+    CidadesComponent
   ],
   imports: [
     CommonModule,
-    UsersRoutingModule,
+    CidadesRoutingModule,
     TableModule,
     SharedModule
   ]
 })
-export class UsersModule { }
+export class CidadesModule { }

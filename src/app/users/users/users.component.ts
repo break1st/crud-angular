@@ -1,30 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { catchError, Observable, of } from 'rxjs';
 
-import { IUser } from '../model/user';
-import { UsersService } from './../services/users.service';
-import { Observable, catchError, of } from 'rxjs';
 import { ICidade } from '../../cidades/model/cidade';
 import { CidadesService } from '../../cidades/services/cidades.service';
+import { IUser } from '../model/user';
+import { UsersService } from './../services/users.service';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrl: './users.component.scss'
 })
-export class UsersComponent implements OnInit {
-  users$: Observable<IUser[]>;
-  cidades$: Observable<ICidade[]>;
-  userToEdit: IUser | null = null;
-  userIdToDelete: number | null = null;
-
-  visibleErrorDialog: boolean = false;
-  messageErrorDialog: string = '';
-
-  visibleEditUserModal: boolean = false;
-
-  visibleDeleteUserDialog: boolean = false;
-
-  visibleAddUserModal: boolean = false;
+export class UsersComponent {
 
   constructor(
     private usersService: UsersService,
@@ -48,6 +35,20 @@ export class UsersComponent implements OnInit {
       })
     );
   }
+
+  users$: Observable<IUser[]>;
+  cidades$: Observable<ICidade[]>;
+  userToEdit: IUser | null = null;
+  userIdToDelete: number | null = null;
+
+  visibleErrorDialog: boolean = false;
+  messageErrorDialog: string = '';
+
+  visibleEditUserModal: boolean = false;
+
+  visibleDeleteUserDialog: boolean = false;
+
+  visibleAddUserModal: boolean = false;
 
   refresh() {
     this.users$ = this.usersService.list()
@@ -92,7 +93,6 @@ export class UsersComponent implements OnInit {
   onClickAddUser() {
     this.visibleAddUserModal = false;
     this.setVisibleAddUserModal(true);
-    console.log(this.cidades$)
   }
 
   setVisibleAddUserModal(visible: boolean) {
@@ -100,7 +100,4 @@ export class UsersComponent implements OnInit {
       this.visibleAddUserModal = visible;
     }, 1);
   }
-
-  ngOnInit(): void {}
-
 }

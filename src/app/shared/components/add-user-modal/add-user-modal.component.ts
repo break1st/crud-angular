@@ -25,9 +25,9 @@ interface IUserData {
   styleUrl: './add-user-modal.component.scss',
 })
 export class AddUserModalComponent implements OnInit {
+
   constructor(private usersService: UsersService) {}
 
-  @Input() cidades: ICidade[] = [];
   @Input() visible: boolean = false;
   userData: IUserData = {
     nome: '',
@@ -40,6 +40,20 @@ export class AddUserModalComponent implements OnInit {
       name: '',
     },
   };
+
+  private _cidades: ICidade[] = [];
+  @Input()
+  set cidades(value: ICidade[]) {
+    if (value === null) return;
+    this._cidades = value;
+    this.citiesToSelect = value.map((cidade) => ({
+      id: cidade.id,
+      name: `${cidade.cidade} - ${cidade.estado}`,
+    }));
+  }
+  get cidades(): ICidade[] {
+    return this._cidades;
+  }
 
   citiesToSelect: City[] = this.cidades.map((cidade) => ({
     id: cidade.id,

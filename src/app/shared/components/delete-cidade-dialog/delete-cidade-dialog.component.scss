@@ -1,0 +1,50 @@
+@import '../../../../styles.scss';
+
+.dialog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 50px;
+  text-align: center;
+
+  p-dropdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    button {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 16px;
+      background-color: transparent;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.8;
+        transition: 0.3s;
+        background-color: #f2ebeb;
+      }
+      &.cancel-button {
+        color: #4c8df6;
+        // border: 1px solid rgba(0, 0, 0, 0.12);
+        border: none;
+      }
+      &.delete-button {
+        color: red;
+        // border: 1px solid red;
+        border: none;
+      }
+    }
+  }
+}
