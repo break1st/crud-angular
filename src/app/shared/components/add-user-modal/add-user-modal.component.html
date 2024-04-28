@@ -1,4 +1,7 @@
-<div class="card flex justify-content-center">
+<app-error-dialog
+  [visible]="visibleErrorDialog"
+  [message]="messageErrorDialog"
+></app-error-dialog><div class="card flex justify-content-center">
   <p-dialog
     draggable="false"
     [(visible)]="visible"
@@ -11,14 +14,14 @@
   >
     <div class="form">
       <h2>{{title}}</h2>
-      <input type="text" pInputText placeholder="Nome" />
-      <input type="text" pInputText placeholder="Apelido" />
-      <input type="text" pInputText placeholder="Time" />
-      <input type="text" pInputText placeholder="Cpf" />
-      <input type="text" pInputText placeholder="Hobbie" />
+      <input [(ngModel)]="userData.nome" type="text" pInputText placeholder="Nome" />
+      <input [(ngModel)]="userData.apelido" type="text" pInputText placeholder="Apelido" />
+      <input [(ngModel)]="userData.time" type="text" pInputText placeholder="Time" />
+      <input [(ngModel)]="userData.cpf" type="text" pInputText placeholder="Cpf" />
+      <input [(ngModel)]="userData.hobbie" type="text" pInputText placeholder="Hobbie" />
       <p-dropdown
         appendTo="body"
-        [options]="cities"
+        [options]="citiesToSelect"
         placeholder="Cidade"
         optionLabel="name"
         [style]="{
@@ -26,8 +29,9 @@
           padding: '5px',
           fontSize: '14px'
         }"
+        [(ngModel)]="userData.cidade"
       ></p-dropdown>
-      <button label="Salvar" class="p-button-success">Salvar</button>
+      <button (click)="salvar()" label="Salvar" class="p-button-success">Salvar</button>
     </div>
   </p-dialog>
 </div>

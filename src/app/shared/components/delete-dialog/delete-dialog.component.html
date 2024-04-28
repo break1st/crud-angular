@@ -12,7 +12,7 @@
     <div class="dialog">
       <h3>{{title}}</h3>
       <div class="buttons">
-        <button label="Sim" class="delete-button">Remover</button>
+        <button (click)="confirm()" label="Sim" class="delete-button">Remover</button>
         <button (click)="closeDialog()" label="Cancelar" class="cancel-button">Cancelar</button>
       </div>
     </div>

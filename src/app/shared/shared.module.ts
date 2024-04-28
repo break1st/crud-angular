@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
 import { EditUserModalComponent } from './components/edit-user-modal/edit-user-modal.component';
@@ -20,7 +21,8 @@ import { AddUserModalComponent } from './components/add-user-modal/add-user-moda
     CommonModule,
     DialogModule,
     DropdownModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    FormsModule
   ],
   exports: [
     ErrorDialogComponent,

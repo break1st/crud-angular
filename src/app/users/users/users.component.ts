@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { IUser } from '../model/user';
 import { UsersService } from './../services/users.service';
 import { Observable, catchError, of } from 'rxjs';
+import { ICidade } from '../../cidades/model/cidade';
+import { CidadesService } from '../../cidades/services/cidades.service';
 
 @Component({
   selector: 'app-users',
@@ -11,6 +13,9 @@ import { Observable, catchError, of } from 'rxjs';
 })
 export class UsersComponent implements OnInit {
   users$: Observable<IUser[]>;
+  cidades$: Observable<ICidade[]>;
+  userToEdit: IUser | null = null;
+  userIdToDelete: number | null = null;
 
   visibleErrorDialog: boolean = false;
   messageErrorDialog: string = '';
@@ -22,8 +27,29 @@ export class UsersComponent implements OnInit {
   visibleAddUserModal: boolean = false;
 
   constructor(
-    private usersService: UsersService
+    private usersService: UsersService,
+    private cidadesService: CidadesService
   ) {
+    this.users$ = this.usersService.list()
+    .pipe(
+      catchError((error) => {
+        console.error(error);
+        this.onError('Erro ao carregar usuários');
+        return of([]);
+      })
+    );
+
+    this.cidades$ = this.cidadesService.list()
+    .pipe(
+      catchError((error) => {
+        console.error(error);
+        this.onError('Erro ao carregar cidades');
+        return of([]);
+      })
+    );
+  }
+
+  refresh() {
     this.users$ = this.usersService.list()
     .pipe(
       catchError((error) => {
@@ -39,7 +65,8 @@ export class UsersComponent implements OnInit {
     this.visibleErrorDialog = true;
   }
 
-  onClickEditUser() {
+  onClickEditUser(user: IUser) {
+    this.userToEdit = user;
     this.visibleEditUserModal = false;
     this.setVisibleEditUserModal(true);
   }
@@ -50,7 +77,8 @@ export class UsersComponent implements OnInit {
     }, 1);
   }
 
-  onClickDeleteUser() {
+  onClickDeleteUser(user: IUser) {
+    this.userIdToDelete = user.id;
     this.visibleDeleteUserDialog = false;
     this.setVisibleDeleteUserDialog(true);
   }
@@ -64,6 +92,7 @@ export class UsersComponent implements OnInit {
   onClickAddUser() {
     this.visibleAddUserModal = false;
     this.setVisibleAddUserModal(true);
+    console.log(this.cidades$)
   }
 
   setVisibleAddUserModal(visible: boolean) {

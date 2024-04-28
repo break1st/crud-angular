@@ -5,5 +5,9 @@ export interface IUser {
   time: string;
   cpf: string;
   hobbie: string;
-  cidade: string;
+  cidade: {
+    id: number;
+    cidade: string;
+    estado: string;
+  };
 }

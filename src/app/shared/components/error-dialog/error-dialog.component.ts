@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'app-error-dialog',
   templateUrl: './error-dialog.component.html',
-  styleUrl: './error-dialog.component.scss'
+  styleUrl: './error-dialog.component.scss',
 })
 export class ErrorDialogComponent {
   @Input() visible: boolean = false;
@@ -12,9 +12,9 @@ export class ErrorDialogComponent {
   constructor() {}
 
   showDialog() {
-      this.visible = true;
+    this.visible = true;
   }
   closeDialog() {
-      this.visible = false;
+    this.visible = false;
   }
 }
